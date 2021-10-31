@@ -6,9 +6,5 @@ dependencyResolutionManagement {
         jcenter() // Warning: this repository is going to shut down soon
     }
 }
-rootProject.name = "Practice3"
-include ':IntentApp'
-include ':share'
-include ':resultactivity'
-include ':systemintentsapp'
-include ':simplefragmentapp'
+rootProject.name = "MireaProject"
+include ':app'
