@@ -1,5 +1,6 @@
 package ru.mirea.chernyshev.mireaproject;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -62,6 +63,16 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+    public void onPlayMusicClick(View view) {
+        startService(
+                new Intent(MainActivity.this, PlayerService.class));
+    }
+
+    public void onStopMusicClick(View view) {
+        stopService(
+                new Intent(MainActivity.this, PlayerService.class));
     }
 
 //    public void onBtnGetSum(View view) {
