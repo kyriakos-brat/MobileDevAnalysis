@@ -33,4 +33,9 @@
         android:name="ru.mirea.chernyshev.mireaproject.CalcFragment"
         android:label="fragment_calc"
         tools:layout="@layout/fragment_calc" />
+    <fragment
+        android:id="@+id/sensorsFragment"
+        android:name="ru.mirea.chernyshev.mireaproject.SensorsFragment"
+        android:label="fragment_sensors"
+        tools:layout="@layout/fragment_sensors" />
 </navigation>

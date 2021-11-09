@@ -24,5 +24,9 @@
             android:id="@+id/calcFragment"
             android:icon="@drawable/ic_share_foreground"
             android:title="CustomCalc"/>
+        <item
+            android:id="@+id/sensorsFragment"
+            android:icon="@drawable/ic_sensors_layer"
+            android:title="Sensors"/>
     </group>
 </menu>
