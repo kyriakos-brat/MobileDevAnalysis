@@ -28,5 +28,9 @@
             android:id="@+id/sensorsFragment"
             android:icon="@drawable/ic_sensors_layer"
             android:title="Sensors"/>
+        <item
+            android:id="@+id/cameraFragment"
+            android:icon="@drawable/ic_camera_foreground"
+            android:title="Custom camera"/>
     </group>
 </menu>

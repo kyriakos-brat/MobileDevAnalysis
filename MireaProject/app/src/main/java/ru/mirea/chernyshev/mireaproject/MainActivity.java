@@ -43,7 +43,8 @@ public class MainActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow, R.id.nav_browser, R.id.calcFragment, R.id.sensorsFragment)
+                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow, R.id.nav_browser,
+                R.id.calcFragment, R.id.sensorsFragment, R.id.cameraFragment)
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
@@ -74,8 +75,4 @@ public class MainActivity extends AppCompatActivity {
         stopService(
                 new Intent(MainActivity.this, PlayerService.class));
     }
-
-//    public void onBtnGetSum(View view) {
-//        Log.d(MainActivity.class.getSimpleName(), "onBtnGetSum called!");
-//    }
 }

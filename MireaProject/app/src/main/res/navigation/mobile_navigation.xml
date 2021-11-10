@@ -38,4 +38,9 @@
         android:name="ru.mirea.chernyshev.mireaproject.SensorsFragment"
         android:label="fragment_sensors"
         tools:layout="@layout/fragment_sensors" />
+    <fragment
+        android:id="@+id/cameraFragment"
+        android:name="ru.mirea.chernyshev.mireaproject.CameraFragment"
+        android:label="fragment_camera"
+        tools:layout="@layout/fragment_camera" />
 </navigation>
