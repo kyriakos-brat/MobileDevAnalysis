@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow, R.id.nav_browser,
-                R.id.calcFragment, R.id.sensorsFragment, R.id.cameraFragment)
+                R.id.calcFragment, R.id.sensorsFragment, R.id.cameraFragment, R.id.recorderFragment)
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
@@ -67,11 +67,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onPlayMusicClick(View view) {
-        startService(
-                new Intent(MainActivity.this, PlayerService.class));
+        Intent intent = new Intent(MainActivity.this, PlayerService.class);
+        intent.putExtra(PlayerService.PLAYER_RES_FILE, R.raw.hampster_song);
+        startService(intent);
     }
 
     public void onStopMusicClick(View view) {
+        //QQ: where this intent are uses?
         stopService(
                 new Intent(MainActivity.this, PlayerService.class));
     }

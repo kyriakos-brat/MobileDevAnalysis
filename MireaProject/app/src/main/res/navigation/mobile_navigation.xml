@@ -43,4 +43,9 @@
         android:name="ru.mirea.chernyshev.mireaproject.CameraFragment"
         android:label="fragment_camera"
         tools:layout="@layout/fragment_camera" />
+    <fragment
+        android:id="@+id/recorderFragment"
+        android:name="ru.mirea.chernyshev.mireaproject.RecorderFragment"
+        android:label="fragment_recorder"
+        tools:layout="@layout/fragment_recorder" />
 </navigation>

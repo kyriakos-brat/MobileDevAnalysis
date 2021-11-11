@@ -32,5 +32,9 @@
             android:id="@+id/cameraFragment"
             android:icon="@drawable/ic_camera_foreground"
             android:title="Custom camera"/>
+        <item
+            android:id="@+id/recorderFragment"
+            android:icon="@drawable/ic_recorder_foreground"
+            android:title="Custom recorder"/>
     </group>
 </menu>
