@@ -5,17 +5,21 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
 public class MainActivity extends AppCompatActivity {
+
+    private static final String TAG = MainActivity.class.getSimpleName();
 
     private EditText tvFileName;
     private EditText tvText;
@@ -42,7 +46,27 @@ public class MainActivity extends AppCompatActivity {
         //I think the local file will be deleted with app, right?
         String lastFilename = preferences.getString(LAST_FILE_NAME, NO_LAST_FILE);
         if (!lastFilename.equals(NO_LAST_FILE)) {
-            //TODO: reading from file + internalFileStorage module was missed
+            FileInputStream fin = null;
+            try {
+                fin = openFileInput(lastFilename);
+                int streamAvailable = fin.available();
+                byte[] bytes = new byte[streamAvailable];
+                if (streamAvailable != fin.read(bytes)) {
+                    Log.d(TAG, "Not all available stream data read!");
+                }
+                String lastFileText = new String(bytes);
+                tvLast.setText(lastFileText);
+            } catch (IOException e) {
+                Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+            } finally {
+                try {
+                    if (fin != null) {
+                        fin.close();
+                    }
+                } catch (IOException e) {
+                    Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }
         } else {
             tvLast.setText("Last file not found!");
         }
