@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         preferences = getPreferences(MODE_PRIVATE);
 
         //QQ: what if user reinstall app? Should we use this some global preferences instead?
+        //I think the local file will be deleted with app, right?
         String lastFilename = preferences.getString(LAST_FILE_NAME, NO_LAST_FILE);
         if (!lastFilename.equals(NO_LAST_FILE)) {
             //TODO: reading from file + internalFileStorage module was missed

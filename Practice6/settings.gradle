@@ -9,3 +9,4 @@ dependencyResolutionManagement {
 rootProject.name = "Practice6"
 include ':Preferences'
 include ':notebook'
+include ':internalfilestorage'
