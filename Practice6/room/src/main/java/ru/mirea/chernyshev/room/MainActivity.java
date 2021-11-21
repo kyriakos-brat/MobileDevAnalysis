@@ -1,0 +1,35 @@
+package ru.mirea.chernyshev.room;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.util.Log;
+
+import java.util.List;
+
+public class MainActivity extends AppCompatActivity {
+    private String TAG = MainActivity.class.getSimpleName();
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        AppDatabase db = App.getInstance().getDatabase();
+        EmployeeDao employeeDao = db.employeeDao();
+
+        Employee employee = new Employee();
+        employee.id = 1;
+        employee.name = "John Galt";
+        employee.salary = 10000;
+        //
+        employeeDao.insert(employee);
+
+        List<Employee> employeeList = employeeDao.getAll();
+        //
+        employee = employeeDao.getById(1);
+        //
+        employee.salary = 20000;
+        employeeDao.update(employee);
+        Log.d(TAG, employee.name + " salary is " + employee.salary);
+    }
+}
