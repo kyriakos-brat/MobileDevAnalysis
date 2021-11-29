@@ -36,5 +36,9 @@
             android:id="@+id/recorderFragment"
             android:icon="@drawable/ic_recorder_foreground"
             android:title="Custom recorder"/>
+        <item
+            android:id="@+id/preferencesFragment"
+            android:icon="@drawable/ic_preferences_foreground"
+            android:title="Greeings preferences"/>
     </group>
 </menu>
