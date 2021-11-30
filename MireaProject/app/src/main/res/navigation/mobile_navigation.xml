@@ -53,4 +53,9 @@
         android:name="ru.mirea.chernyshev.mireaproject.PreferencesFragment"
         android:label="fragment_preferences"
         tools:layout="@layout/fragment_preferences" />
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="ru.mirea.chernyshev.mireaproject.HistoryFragment"
+        android:label="fragment_history"
+        tools:layout="@layout/fragment_history" />
 </navigation>

@@ -39,6 +39,10 @@
         <item
             android:id="@+id/preferencesFragment"
             android:icon="@drawable/ic_preferences_foreground"
-            android:title="Greeings preferences"/>
+            android:title="Greetings preferences"/>
+        <item
+            android:id="@+id/historyFragment"
+            android:icon="@drawable/ic_history_foreground"
+            android:title="Custom history"/>
     </group>
 </menu>
