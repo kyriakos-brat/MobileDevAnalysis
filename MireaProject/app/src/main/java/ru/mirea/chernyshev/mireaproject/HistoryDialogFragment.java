@@ -62,6 +62,7 @@ public class HistoryDialogFragment extends DialogFragment {
                     }
                 }
                 Toast.makeText(getActivity(), "Text saved!", Toast.LENGTH_SHORT).show();
+                getDialog().dismiss();
             }
         });
         return dialogView;

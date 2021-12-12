@@ -5,6 +5,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -23,6 +25,7 @@ import java.io.IOException;
  * create an instance of this fragment.
  */
 public class HistoryFragment extends Fragment {
+
     private final String TAG = MainActivity.class.getSimpleName();
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -39,6 +42,8 @@ public class HistoryFragment extends Fragment {
     static final String HISTORY_FILE;
     static final String HISTORY_NO_FILE;
     private SharedPreferences preferences;
+
+    private CustomAdapter adapter;
 
     static {
         HISTORY_FILE = "history_filename";
@@ -90,11 +95,12 @@ public class HistoryFragment extends Fragment {
             public void onClick(View v) {
                 HistoryDialogFragment dialogFragment = new HistoryDialogFragment();
                 dialogFragment.show(getActivity().getSupportFragmentManager(), "HistoryDialog");
+                //TODO: (it's just note for later, but I'm too lazy to add this feature) RecycleView updating
             }
         });
-        //TODO: reading from file string by string inside RecycleView
         if (preferences.contains(HISTORY_FILE)) {
             FileInputStream fin = null;
+            String[] parsedHistory = null;
             try {
                 fin = getActivity().openFileInput(preferences.getString(HISTORY_FILE, HISTORY_NO_FILE));
                 int streamAvailable = fin.available();
@@ -102,6 +108,10 @@ public class HistoryFragment extends Fragment {
                 byte[] bytes = new byte[streamAvailable];
                 if (streamAvailable != fin.read(bytes)) {
                     Log.d(TAG, "Not all available stream data read!");
+                }
+                parsedHistory = new String(bytes).split("\n");
+                for (String str : parsedHistory) {
+                    Log.d(TAG, "Parsed string:" + str);
                 }
             } catch (IOException e) {
                 Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_SHORT).show();
@@ -114,6 +124,10 @@ public class HistoryFragment extends Fragment {
                     Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
+            RecyclerView recyclerView = fragmentView.findViewById(R.id.recyclerView);
+            recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+            adapter = new CustomAdapter(getActivity(), parsedHistory);
+            recyclerView.setAdapter(adapter);
         } else {
             Toast.makeText(getActivity(), "No history file!", Toast.LENGTH_SHORT).show();
         }
